@@ -59,9 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				89FC05AD1D53BE370041BC0E /* AppFiles */,
+				89FC05AA1D53925A0041BC0E /* Models */,
+				89FC05AB1D5392850041BC0E /* Views */,
 				89FC05AC1D5392910041BC0E /* Controllers */,
-				89FC05AB1D5392850041BC0E /* Layouts */,
-				89FC05AA1D53925A0041BC0E /* DataModels */,
 				89D8BEC81D529388000AACBD /* Supporting Files */,
 			);
 			path = MazeRunner;
@@ -75,20 +75,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		89FC05AA1D53925A0041BC0E /* DataModels */ = {
+		89FC05AA1D53925A0041BC0E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = DataModels;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		89FC05AB1D5392850041BC0E /* Layouts */ = {
+		89FC05AB1D5392850041BC0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				89D8BED61D529388000AACBD /* LaunchScreen.storyboard */,
 				89D8BED11D529388000AACBD /* Main.storyboard */,
 			);
-			name = Layouts;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		89FC05AC1D5392910041BC0E /* Controllers */ = {
