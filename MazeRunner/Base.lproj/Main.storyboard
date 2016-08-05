@@ -1276,6 +1276,61 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="fiveFive" destination="PZE-tQ-dYU" id="O5I-Uz-vSb"/>
+                        <outlet property="fiveFour" destination="bc8-Nb-6Yp" id="RxF-d2-Vci"/>
+                        <outlet property="fiveOne" destination="Wts-Jc-cBR" id="c1h-zA-uCQ"/>
+                        <outlet property="fiveSeven" destination="I3B-ud-LdL" id="AUw-Bv-X5t"/>
+                        <outlet property="fiveSix" destination="9CN-Lh-gFO" id="dR1-ZZ-Qb7"/>
+                        <outlet property="fiveThree" destination="foM-5G-iCY" id="RPc-L8-o7A"/>
+                        <outlet property="fiveTwo" destination="cnT-3k-v12" id="Feg-Fm-u7g"/>
+                        <outlet property="fourFive" destination="vqs-hX-Akl" id="P05-4M-4qr"/>
+                        <outlet property="fourFour" destination="bQo-2R-XDU" id="qn0-nE-HMD"/>
+                        <outlet property="fourOne" destination="NoW-Kd-u7g" id="m0O-IK-Ox1"/>
+                        <outlet property="fourSeven" destination="4NL-00-Jny" id="4iW-yg-fBx"/>
+                        <outlet property="fourSix" destination="Jce-yQ-C04" id="sca-0Y-ncf"/>
+                        <outlet property="fourThree" destination="mcl-jE-xbu" id="WxS-NS-hsf"/>
+                        <outlet property="fourTwo" destination="5cH-4k-Mxj" id="Mh9-JT-GQ8"/>
+                        <outlet property="leftSnakeColor" destination="7MW-sI-dP9" id="A2e-dW-Wcd"/>
+                        <outlet property="leftSnakeScore" destination="UT3-TO-Fb2" id="6Dj-yD-QPE"/>
+                        <outlet property="oneFive" destination="W9t-bp-HaO" id="qZ1-h8-tyr"/>
+                        <outlet property="oneFour" destination="wgn-Kr-T6w" id="p0B-pl-S66"/>
+                        <outlet property="oneOne" destination="Td3-Nz-S2f" id="1dU-RY-lDz"/>
+                        <outlet property="oneSeven" destination="GCH-22-QWW" id="OjH-X3-z8L"/>
+                        <outlet property="oneSix" destination="Pst-F0-oim" id="zUf-Kv-m2J"/>
+                        <outlet property="oneThree" destination="Nyn-f6-DlR" id="SRp-Hq-1Br"/>
+                        <outlet property="oneTwo" destination="jFL-Hz-ijf" id="9fJ-Ld-mnE"/>
+                        <outlet property="rightSnakeColor" destination="Zg5-WH-r6k" id="iZi-5p-PtA"/>
+                        <outlet property="rightSnakeScore" destination="xpC-ZE-KPx" id="EZB-22-YF4"/>
+                        <outlet property="sevenFive" destination="Snp-FB-ODL" id="phR-8z-GBM"/>
+                        <outlet property="sevenFour" destination="a9y-Z5-Nhg" id="ABn-GZ-3C8"/>
+                        <outlet property="sevenOne" destination="YQ7-hY-RLw" id="EBU-iU-p2C"/>
+                        <outlet property="sevenSeven" destination="jWg-2e-zbY" id="Chv-jl-rLl"/>
+                        <outlet property="sevenSix" destination="fH4-Md-nDk" id="MWw-qE-D3M"/>
+                        <outlet property="sevenThree" destination="phM-Ja-Sqx" id="kIA-6n-pKR"/>
+                        <outlet property="sevenTwo" destination="2bH-XO-Bgb" id="8wC-Op-9TG"/>
+                        <outlet property="sixFive" destination="MZ0-Qh-fsT" id="cVn-h1-eq9"/>
+                        <outlet property="sixFour" destination="GYZ-wR-GPF" id="1u7-mE-7tG"/>
+                        <outlet property="sixOne" destination="JAe-nL-FbV" id="d60-IH-VlK"/>
+                        <outlet property="sixSeven" destination="kWv-dz-4tk" id="KVW-6U-Taa"/>
+                        <outlet property="sixSix" destination="uW4-mU-HEe" id="Ybo-Sy-Ye6"/>
+                        <outlet property="sixThree" destination="rPf-1U-WEJ" id="5qc-rC-v7n"/>
+                        <outlet property="sixTwo" destination="Oba-v1-L6n" id="hkN-Gw-qDT"/>
+                        <outlet property="threeFive" destination="KBf-qD-q9w" id="2fY-XE-yhf"/>
+                        <outlet property="threeFour" destination="8q0-ro-Vc2" id="Iqv-KR-rnv"/>
+                        <outlet property="threeOne" destination="aUq-6p-Kyq" id="TEW-my-6Go"/>
+                        <outlet property="threeSeven" destination="PG9-c5-IMA" id="wdz-RV-4Ae"/>
+                        <outlet property="threeSix" destination="7WY-Mx-I3R" id="ji8-DO-ccT"/>
+                        <outlet property="threeThree" destination="cxW-Oj-KL8" id="eQ2-g5-ZJr"/>
+                        <outlet property="threeTwo" destination="IJh-cd-ncz" id="zXP-0Q-dKN"/>
+                        <outlet property="twoFive" destination="gN0-nJ-JE7" id="Y1o-NW-fWY"/>
+                        <outlet property="twoFour" destination="QFc-Vy-Km8" id="tIL-mW-ts1"/>
+                        <outlet property="twoOne" destination="ou7-tn-7oc" id="7Qk-bb-4cc"/>
+                        <outlet property="twoSeven" destination="UJj-yM-02l" id="Afb-qm-vwS"/>
+                        <outlet property="twoSix" destination="ksu-0B-Q3h" id="IB3-En-7WX"/>
+                        <outlet property="twoThree" destination="4Sb-ML-XfU" id="nGC-IA-SfN"/>
+                        <outlet property="twoTwo" destination="lJ0-53-fgg" id="68a-B0-RrE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
