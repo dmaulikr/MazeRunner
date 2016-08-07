@@ -1124,13 +1124,60 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="fiveOne" destination="T2b-3f-Geh" id="fAo-nQ-V8O"/>
-                        <outlet property="fourOne" destination="C97-mP-HEs" id="Iri-hc-RUb"/>
-                        <outlet property="oneOne" destination="bXK-ak-7rG" id="BRV-Q9-gk7"/>
-                        <outlet property="sevenOne" destination="isq-sS-pRg" id="465-xh-8p5"/>
-                        <outlet property="sixOne" destination="oOo-Az-mfD" id="M4O-55-Ji5"/>
-                        <outlet property="threeOne" destination="Y0m-mQ-DHe" id="3Rc-Yk-Qdm"/>
-                        <outlet property="twoOne" destination="s1l-Zx-S1C" id="8Ji-Jx-U8Q"/>
+                        <outlet property="fiveFive" destination="dEz-uX-R0O" id="TMw-7n-zp9"/>
+                        <outlet property="fiveFour" destination="5Hm-m6-0Qp" id="GbG-d8-2W3"/>
+                        <outlet property="fiveOne" destination="ObF-Ei-MUQ" id="H5S-if-VAV"/>
+                        <outlet property="fiveSix" destination="Eoh-vc-imo" id="CkQ-Dr-NxD"/>
+                        <outlet property="fiveThree" destination="FdP-eU-eFt" id="3PT-jx-Meb"/>
+                        <outlet property="fiveTwo" destination="pUP-Wl-Jkq" id="PQc-pb-xSQ"/>
+                        <outlet property="fiveZero" destination="oOo-Az-mfD" id="8qZ-r0-0bs"/>
+                        <outlet property="fourFive" destination="Ex3-mf-yaT" id="4Rc-Kq-Qe7"/>
+                        <outlet property="fourFour" destination="fb0-hG-UyQ" id="H6O-sS-58B"/>
+                        <outlet property="fourOne" destination="VzY-iY-VXL" id="Nuq-e4-oWn"/>
+                        <outlet property="fourSix" destination="7jJ-d3-Gr3" id="8Ef-mA-Kbd"/>
+                        <outlet property="fourThree" destination="NJ8-ny-THU" id="ijT-h0-rAY"/>
+                        <outlet property="fourTwo" destination="w67-Cg-1a4" id="cQ6-5Q-Am6"/>
+                        <outlet property="fourZero" destination="T2b-3f-Geh" id="9VV-Lh-7yW"/>
+                        <outlet property="leftPlayerColor" destination="LFg-bM-Eog" id="WKz-nj-z4x"/>
+                        <outlet property="leftPlayerScore" destination="BNi-TK-QlH" id="hZd-uy-SAO"/>
+                        <outlet property="oneFive" destination="XWG-9s-ANC" id="uT1-wf-e5o"/>
+                        <outlet property="oneFour" destination="x4e-SD-Qr8" id="INv-Em-g7L"/>
+                        <outlet property="oneOne" destination="4Py-Wb-lNN" id="7uP-Fm-pMX"/>
+                        <outlet property="oneSix" destination="0fC-U0-mGe" id="XEO-vQ-riy"/>
+                        <outlet property="oneThree" destination="2pI-3v-AMx" id="yei-3V-fnI"/>
+                        <outlet property="oneTwo" destination="oMP-Pv-Jzq" id="aPS-Z2-DIY"/>
+                        <outlet property="oneZero" destination="s1l-Zx-S1C" id="kmp-Ne-W8V"/>
+                        <outlet property="rightPlayerColor" destination="9EZ-gl-eKf" id="c06-hb-zly"/>
+                        <outlet property="rightPlayerScore" destination="XUr-Po-v8Q" id="Bal-df-VNu"/>
+                        <outlet property="scoreTitle" destination="Ffq-4m-5jB" id="oHp-pF-QEj"/>
+                        <outlet property="sixFive" destination="KwG-Gd-YLr" id="tq8-yA-Bj3"/>
+                        <outlet property="sixFour" destination="dfG-Wd-EOw" id="L5b-di-7QY"/>
+                        <outlet property="sixOne" destination="YOU-hl-l9g" id="jP7-m1-LfB"/>
+                        <outlet property="sixSix" destination="lAq-qa-W15" id="LGK-zB-eyp"/>
+                        <outlet property="sixThree" destination="fbl-5X-G0f" id="KYy-ZW-Hup"/>
+                        <outlet property="sixTwo" destination="OYX-wF-PnA" id="Arh-JX-4zJ"/>
+                        <outlet property="sixZero" destination="isq-sS-pRg" id="Br7-WD-lZQ"/>
+                        <outlet property="threeFive" destination="QkQ-AU-bsb" id="EHi-ff-I9a"/>
+                        <outlet property="threeFour" destination="b1W-Rp-G9H" id="bRk-tv-Ls1"/>
+                        <outlet property="threeOne" destination="lb5-bT-D9S" id="BtN-YS-j3b"/>
+                        <outlet property="threeSix" destination="nwB-8V-6x8" id="WR5-r5-4JF"/>
+                        <outlet property="threeThree" destination="XBe-9F-Lds" id="b5E-Cp-1Ae"/>
+                        <outlet property="threeTwo" destination="N5X-j6-Tj2" id="E5G-mJ-D2U"/>
+                        <outlet property="threeZero" destination="C97-mP-HEs" id="mma-fq-8Hi"/>
+                        <outlet property="twoFive" destination="UZM-DK-Mbi" id="QNJ-o0-cbh"/>
+                        <outlet property="twoFour" destination="W4c-le-3zc" id="dK6-59-Je4"/>
+                        <outlet property="twoOne" destination="3cU-HL-thy" id="vrL-zs-7Ka"/>
+                        <outlet property="twoSix" destination="Txl-2c-S7E" id="3kb-10-sz0"/>
+                        <outlet property="twoThree" destination="ECB-Ff-xdo" id="9Md-IC-jJP"/>
+                        <outlet property="twoTwo" destination="a4u-8n-1cX" id="uQj-n6-lV0"/>
+                        <outlet property="twoZero" destination="Y0m-mQ-DHe" id="TlO-gK-5tw"/>
+                        <outlet property="zeroFive" destination="PtB-Ks-r8y" id="3Mw-Qv-XCx"/>
+                        <outlet property="zeroFour" destination="3NV-j2-Nk3" id="epA-cq-HcG"/>
+                        <outlet property="zeroOne" destination="dGq-6b-I0z" id="Rmo-Px-NSg"/>
+                        <outlet property="zeroSix" destination="GNj-f5-hwi" id="7sn-kf-h5I"/>
+                        <outlet property="zeroThree" destination="cZY-UY-22n" id="Nxq-IC-Etc"/>
+                        <outlet property="zeroTwo" destination="qxa-Ya-yf4" id="5Qu-BC-oMp"/>
+                        <outlet property="zeroZero" destination="bXK-ak-7rG" id="vef-Rt-NM4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
