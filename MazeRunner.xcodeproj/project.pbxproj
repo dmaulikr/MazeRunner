@@ -15,6 +15,7 @@
 		891E879B1D562BEF00D76585 /* RedTeam100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E879A1D562BEF00D76585 /* RedTeam100.png */; };
 		891E879D1D562BFB00D76585 /* RedFace100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E879C1D562BFB00D76585 /* RedFace100.png */; };
 		891E879F1D562C0900D76585 /* RedBeenThere100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E879E1D562C0900D76585 /* RedBeenThere100.png */; };
+		893397621D56AD2300ED5EF2 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 893397611D56AD2300ED5EF2 /* Cell.m */; };
 		89D8BECA1D529388000AACBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BEC91D529388000AACBD /* main.m */; };
 		89D8BECD1D529388000AACBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BECC1D529388000AACBD /* AppDelegate.m */; };
 		89D8BED01D529388000AACBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BECF1D529388000AACBD /* ViewController.m */; };
@@ -32,6 +33,8 @@
 		891E879A1D562BEF00D76585 /* RedTeam100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedTeam100.png; sourceTree = "<group>"; };
 		891E879C1D562BFB00D76585 /* RedFace100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedFace100.png; sourceTree = "<group>"; };
 		891E879E1D562C0900D76585 /* RedBeenThere100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBeenThere100.png; sourceTree = "<group>"; };
+		893397601D56AD2300ED5EF2 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		893397611D56AD2300ED5EF2 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		89D8BEC51D529388000AACBD /* MazeRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D8BEC91D529388000AACBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89D8BECB1D529388000AACBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,14 +61,14 @@
 		891E878F1D562B4100D76585 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				891E87901D562BA600D76585 /* BlueTeam100.png */,
-				891E87921D562BB500D76585 /* BlueFace100.png */,
-				891E87941D562BC300D76585 /* BlueBeenThere100.png */,
 				891E87961D562BD000D76585 /* GrayDot100.png */,
 				891E87981D562BDD00D76585 /* Prize100.png */,
 				891E879A1D562BEF00D76585 /* RedTeam100.png */,
 				891E879C1D562BFB00D76585 /* RedFace100.png */,
 				891E879E1D562C0900D76585 /* RedBeenThere100.png */,
+				891E87901D562BA600D76585 /* BlueTeam100.png */,
+				891E87921D562BB500D76585 /* BlueFace100.png */,
+				891E87941D562BC300D76585 /* BlueBeenThere100.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -111,6 +114,8 @@
 		89FC05AA1D53925A0041BC0E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				893397601D56AD2300ED5EF2 /* Cell.h */,
+				893397611D56AD2300ED5EF2 /* Cell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D8BED01D529388000AACBD /* ViewController.m in Sources */,
+				893397621D56AD2300ED5EF2 /* Cell.m in Sources */,
 				89D8BECD1D529388000AACBD /* AppDelegate.m in Sources */,
 				89D8BECA1D529388000AACBD /* main.m in Sources */,
 			);
