@@ -85,9 +85,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *fiveSix;
 @property (weak, nonatomic) IBOutlet UIImageView *sixSix;
 
-
-
-
 @end
 
 typedef NS_ENUM(NSInteger, ImageType)
@@ -159,10 +156,9 @@ typedef NS_ENUM(NSInteger, ImageType)
                                                                                              @56 : @"fiveSix",
                                                                                              @66 : @"sixSix"
                                                                                              }];
-
+    //[self testGrid];
     
-    [self changeLocation:@61 toImage:ImageTypeBlueFace];
-    [self changeLocation:@41 toImage:ImageTypePrize];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -170,47 +166,59 @@ typedef NS_ENUM(NSInteger, ImageType)
     // Dispose of any resources that can be recreated.
 }
 
-
-
-- (void)changeLocationImage:(UIImageView *)location toImage:(NSString *)newImage {
-    
-    location.image = [UIImage imageNamed:newImage];
+- (void)testGrid {
+    [self changeLocation:@00 toImage:ImageTypePrize];
+    [self changeLocation:@11 toImage:ImageTypeBlueFace];
+    [self changeLocation:@22 toImage:ImageTypeBlueBeenThere];
+    [self changeLocation:@33 toImage:ImageTypeRedFace];
+    [self changeLocation:@44 toImage:ImageTypeRedBeenThere];
+    [self changeLocation:@55 toImage:ImageTypePrize];
+    [self changeLocation:@66 toImage:ImageTypeBlueFace];
+    [self changeLocation:@77 toImage:ImageTypePrize];
 }
-                             
+
 - (void)changeLocation:(NSNumber *)locationNumber toImage:(enum ImageType)newImage {
+    int mod = 10;
+    int maxMod = 8;
+    int maxValue = 67;
     
-    UIImageView *locationImageView = [self valueForKey:[self.imageViewTranslationDictionary objectForKey:locationNumber]];
-    
-    switch(newImage) {
-        case ImageTypeGrayDot:
-            locationImageView.image = [UIImage imageNamed:@"GrayDot100"];
-            break;
-        case ImageTypePrize:
-            locationImageView.image = [UIImage imageNamed:@"Prize100"];
-            break;
-        case ImageTypeRedTeam:
-            locationImageView.image = [UIImage imageNamed:@"RedTeam100"];
-            break;
-        case ImageTypeRedFace:
-            locationImageView.image = [UIImage imageNamed:@"RedFace100"];
-            break;
-        case ImageTypeRedBeenThere:
-            locationImageView.image = [UIImage imageNamed:@"RedBeenThere100"];
-            break;
-        case ImageTypeBlueTeam:
-            locationImageView.image = [UIImage imageNamed:@"BlueTeam100"];
-            break;
-        case ImageTypeBlueFace:
-            locationImageView.image = [UIImage imageNamed:@"BlueFace100"];
-            break;
-        case ImageTypeBlueBeenThere:
-            locationImageView.image = [UIImage imageNamed:@"BlueBeenThere100"];
-            break;
-        default:
-            locationImageView.image = [UIImage imageNamed:@"GrayDot100"];
-            NSLog(@"%@", [NSString stringWithFormat:@"Unrecognized ImageType"]);
-            break;
-            
+    if (locationNumber.intValue % mod < maxMod && locationNumber.intValue < maxValue) {
+        
+        UIImageView *locationImageView = [self valueForKey:[self.imageViewTranslationDictionary objectForKey:locationNumber]];
+        
+        switch(newImage) {
+            case ImageTypeGrayDot:
+                locationImageView.image = [UIImage imageNamed:@"GrayDot100"];
+                break;
+            case ImageTypePrize:
+                locationImageView.image = [UIImage imageNamed:@"Prize100"];
+                break;
+            case ImageTypeRedTeam:
+                locationImageView.image = [UIImage imageNamed:@"RedTeam100"];
+                break;
+            case ImageTypeRedFace:
+                locationImageView.image = [UIImage imageNamed:@"RedFace100"];
+                break;
+            case ImageTypeRedBeenThere:
+                locationImageView.image = [UIImage imageNamed:@"RedBeenThere100"];
+                break;
+            case ImageTypeBlueTeam:
+                locationImageView.image = [UIImage imageNamed:@"BlueTeam100"];
+                break;
+            case ImageTypeBlueFace:
+                locationImageView.image = [UIImage imageNamed:@"BlueFace100"];
+                break;
+            case ImageTypeBlueBeenThere:
+                locationImageView.image = [UIImage imageNamed:@"BlueBeenThere100"];
+                break;
+            default:
+                locationImageView.image = [UIImage imageNamed:@"GrayDot100"];
+                NSLog(@"%@", [NSString stringWithFormat:@"Unrecognized ImageType"]);
+                break;
+                
+        }
+    } else {
+        NSLog(@"Invalid Location: %@", locationNumber);
     }
     
 }
