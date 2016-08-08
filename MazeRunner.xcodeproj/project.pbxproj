@@ -16,12 +16,14 @@
 		891E879D1D562BFB00D76585 /* RedFace100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E879C1D562BFB00D76585 /* RedFace100.png */; };
 		891E879F1D562C0900D76585 /* RedBeenThere100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E879E1D562C0900D76585 /* RedBeenThere100.png */; };
 		893397621D56AD2300ED5EF2 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 893397611D56AD2300ED5EF2 /* Cell.m */; };
+		8950A2351D58140800605E35 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 8950A2341D58140800605E35 /* Grid.m */; };
 		89D8BECA1D529388000AACBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BEC91D529388000AACBD /* main.m */; };
 		89D8BECD1D529388000AACBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BECC1D529388000AACBD /* AppDelegate.m */; };
 		89D8BED01D529388000AACBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8BECF1D529388000AACBD /* ViewController.m */; };
 		89D8BED31D529388000AACBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D8BED11D529388000AACBD /* Main.storyboard */; };
 		89D8BED51D529388000AACBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D8BED41D529388000AACBD /* Assets.xcassets */; };
 		89D8BED81D529388000AACBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D8BED61D529388000AACBD /* LaunchScreen.storyboard */; };
+		89DE6BF01D584DC700E31C7F /* SnakeBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DE6BEF1D584DC700E31C7F /* SnakeBot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		891E879E1D562C0900D76585 /* RedBeenThere100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBeenThere100.png; sourceTree = "<group>"; };
 		893397601D56AD2300ED5EF2 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		893397611D56AD2300ED5EF2 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		8950A2331D58140800605E35 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		8950A2341D58140800605E35 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		89D8BEC51D529388000AACBD /* MazeRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D8BEC91D529388000AACBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89D8BECB1D529388000AACBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 		89D8BED41D529388000AACBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89D8BED71D529388000AACBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89D8BED91D529388000AACBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89DE6BEE1D584DC700E31C7F /* SnakeBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnakeBot.h; sourceTree = "<group>"; };
+		89DE6BEF1D584DC700E31C7F /* SnakeBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnakeBot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,8 @@
 			children = (
 				893397601D56AD2300ED5EF2 /* Cell.h */,
 				893397611D56AD2300ED5EF2 /* Cell.m */,
+				8950A2331D58140800605E35 /* Grid.h */,
+				8950A2341D58140800605E35 /* Grid.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -134,6 +142,8 @@
 			children = (
 				89D8BECE1D529388000AACBD /* ViewController.h */,
 				89D8BECF1D529388000AACBD /* ViewController.m */,
+				89DE6BEE1D584DC700E31C7F /* SnakeBot.h */,
+				89DE6BEF1D584DC700E31C7F /* SnakeBot.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -227,7 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8950A2351D58140800605E35 /* Grid.m in Sources */,
 				89D8BED01D529388000AACBD /* ViewController.m in Sources */,
+				89DE6BF01D584DC700E31C7F /* SnakeBot.m in Sources */,
 				893397621D56AD2300ED5EF2 /* Cell.m in Sources */,
 				89D8BECD1D529388000AACBD /* AppDelegate.m in Sources */,
 				89D8BECA1D529388000AACBD /* main.m in Sources */,

@@ -1104,22 +1104,57 @@
                                 </subviews>
                                 <variation key="widthClass=compact" axis="vertical"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unl-HK-tyz">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BQN-Id-Fma"/>
+                                    <constraint firstAttribute="width" constant="40" id="cm6-MK-vjE"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BQN-Id-Fma"/>
+                                        <exclude reference="cm6-MK-vjE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="BQN-Id-Fma"/>
+                                        <include reference="cm6-MK-vjE"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onStartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WcR-9G-Yx4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Unl-HK-tyz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HZd-YZ-cSk"/>
                             <constraint firstItem="68B-Jw-2lL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LR2-2M-qkO"/>
                             <constraint firstItem="68B-Jw-2lL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XOa-Ph-MTF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Unl-HK-tyz" secondAttribute="bottom" constant="40" id="wAf-iD-n13"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Unl-HK-tyz"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="LR2-2M-qkO"/>
                                 <exclude reference="XOa-Ph-MTF"/>
+                                <exclude reference="HZd-YZ-cSk"/>
+                                <exclude reference="wAf-iD-n13"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Unl-HK-tyz"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="LR2-2M-qkO"/>
                                 <include reference="XOa-Ph-MTF"/>
+                                <include reference="HZd-YZ-cSk"/>
+                                <include reference="wAf-iD-n13"/>
                             </mask>
                         </variation>
                     </view>

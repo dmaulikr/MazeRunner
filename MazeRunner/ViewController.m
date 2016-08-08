@@ -6,12 +6,21 @@
 //  Copyright © 2016 William Lundy. All rights reserved.
 //
 
+#import "Cell.h"
+#import "Grid.h"
 #import "ViewController.h"
 
 @interface ViewController ()
 
-
+@property (nonatomic, strong) Cell *testCell;
+@property (nonatomic, strong) Grid *gameGrid;
 @property (nonatomic, strong) NSDictionary *imageViewTranslationDictionary;
+
+// Data Models
+
+
+
+
 
 // Score Labels
 @property (weak, nonatomic) IBOutlet UIImageView *leftPlayerColor;
@@ -87,17 +96,7 @@
 
 @end
 
-typedef NS_ENUM(NSInteger, ImageType)
-{
-    ImageTypeGrayDot = 1,
-    ImageTypePrize,
-    ImageTypeRedTeam,
-    ImageTypeRedFace,
-    ImageTypeRedBeenThere,
-    ImageTypeBlueTeam,
-    ImageTypeBlueFace,
-    ImageTypeBlueBeenThere
-};
+
 
 @implementation ViewController
 
@@ -106,6 +105,29 @@ typedef NS_ENUM(NSInteger, ImageType)
     // Do any additional setup after loading the view, typically from a nib.
     
     // Build the location translation dictionary
+    [self buildTranslationDictionary];
+    
+    // Initialize Game Grid
+    self.gameGrid = [[Grid alloc] initWithDictionary:_imageViewTranslationDictionary];
+    //NSLog(@"%@",_gameGrid);
+    
+    
+    //[self testGrid];
+    
+    
+    
+    
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Setup Functions
+
+- (void)buildTranslationDictionary {
     self.imageViewTranslationDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{ @00 : @"zeroZero",
                                                                                              @10 : @"oneZero",
                                                                                              @20 : @"twoZero",
@@ -156,15 +178,10 @@ typedef NS_ENUM(NSInteger, ImageType)
                                                                                              @56 : @"fiveSix",
                                                                                              @66 : @"sixSix"
                                                                                              }];
-    //[self testGrid];
-    
-
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+#pragma mark - Test Functions
 
 - (void)testGrid {
     [self changeLocation:@00 toImage:ImageTypePrize];
@@ -177,12 +194,11 @@ typedef NS_ENUM(NSInteger, ImageType)
     [self changeLocation:@77 toImage:ImageTypePrize];
 }
 
+#pragma mark - UI Functions
+
 - (void)changeLocation:(NSNumber *)locationNumber toImage:(enum ImageType)newImage {
-    int mod = 10;
-    int maxMod = 8;
-    int maxValue = 67;
     
-    if (locationNumber.intValue % mod < maxMod && locationNumber.intValue < maxValue) {
+    if (locationNumber.intValue % 10 < 8 && locationNumber.intValue < 67) {
         
         UIImageView *locationImageView = [self valueForKey:[self.imageViewTranslationDictionary objectForKey:locationNumber]];
         
@@ -222,7 +238,36 @@ typedef NS_ENUM(NSInteger, ImageType)
     }
     
 }
+
+- (void)refreshGameGrid {
+    for(id key in self.gameGrid.gridDictionary) {
+        Cell *locationCell = [self.gameGrid.gridDictionary objectForKey:key];
+        [self changeLocation:key toImage:locationCell.imageType];
+    }
+}
                              
-                             
+- (void)resetGameGrid {
+    for(id key in self.gameGrid.gridDictionary) {
+        [self changeLocation:key toImage:ImageTypeGrayDot];
+    }
+}
+
+- (IBAction)onStartButtonPressed:(id)sender {
+    [self resetGameGrid];
+    
+    // Drop the prize token
+    [self randomPrizeLocation];
+    
+    // Spawn the bots
+    
+    
+    
+    
+}
+
+- (void)randomPrizeLocation {
+    NSNumber *newPrizeLocation = @(arc4random_uniform(7) * 10 +arc4random_uniform(7));
+    [self changeLocation:newPrizeLocation toImage:ImageTypePrize];
+}
 
 @end
