@@ -109,7 +109,7 @@
     
     // Initialize Game Grid
     self.gameGrid = [[Grid alloc] initWithDictionary:_imageViewTranslationDictionary];
-    //NSLog(@"%@",_gameGrid);
+    NSLog(@"%@",_gameGrid);
     
     
     //[self testGrid];

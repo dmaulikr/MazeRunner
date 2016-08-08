@@ -30,10 +30,12 @@
 
 - (NSString *)description {
     
+    NSString *str = @"\n\nStart:\n";
     for(id key in self.gridDictionary) {
-        NSLog(@"key=%@ value=%@", key, [self.gridDictionary objectForKey:key]);
+        //NSLog(@"key=%@ value=%@", key, [self.gridDictionary objectForKey:key]);
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"key: %@ Cell: %@\n ", key, [self.gridDictionary objectForKey:key]]];
     }
-    return @"done";
+    return str;
 }
 
 @end

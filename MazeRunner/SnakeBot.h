@@ -10,4 +10,7 @@
 
 @interface SnakeBot : NSObject
 
+@property (nonatomic, strong)NSNumber *startLocation;
+
+
 @end
