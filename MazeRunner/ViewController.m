@@ -8,6 +8,7 @@
 
 #import "Cell.h"
 #import "Grid.h"
+#import "SnakeBot.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -109,7 +110,7 @@
     
     // Initialize Game Grid
     self.gameGrid = [[Grid alloc] initWithDictionary:_imageViewTranslationDictionary];
-    NSLog(@"%@",_gameGrid);
+    //NSLog(@"%@",_gameGrid);
     
     
     //[self testGrid];
@@ -253,21 +254,44 @@
 }
 
 - (IBAction)onStartButtonPressed:(id)sender {
-    [self resetGameGrid];
+    [self.gameGrid resetGameGrid];
     
     // Drop the prize token
     [self randomPrizeLocation];
     
     // Spawn the bots
+    // Spawn the red bot at 0,0 and place head token
+    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid.gridDictionary];
+    [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation withImageType:redSnakeBot.playerColor];
+    
+    // Spawn the blue bot at 6,6 and place head token
+    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid.gridDictionary];
+    [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation withImageType:blueSnakeBot.playerColor];
+    [self refreshGameGrid];
     
     
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    
+    [self refreshGameGrid];
+    
+    // NSLog(@"%@", self.gameGrid);
+    // RunLoop exits on win condition
+    
+    // Winner score increased
     
     
 }
 
 - (void)randomPrizeLocation {
     NSNumber *newPrizeLocation = @(arc4random_uniform(7) * 10 +arc4random_uniform(7));
-    [self changeLocation:newPrizeLocation toImage:ImageTypePrize];
+    [[self.gameGrid.gridDictionary objectForKey:newPrizeLocation] setImageType:ImageTypePrize];
 }
 
 @end
