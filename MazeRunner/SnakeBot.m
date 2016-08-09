@@ -32,7 +32,7 @@
     //NSArray
     
     // Ask the grid for available moves
-    NSArray *availableMoves = [gameGrid movesAvailable:self.headLocation forSnakeBotColor:self.playerColor];
+    NSArray *availableMoves = [gameGrid movesAvailable:[gameGrid headLocationForPlayerColor:self.playerColor] forSnakeBotColor:self.playerColor];
     
     //NSArray *availableMoves = @[@1,@10];
     

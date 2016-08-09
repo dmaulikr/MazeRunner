@@ -44,7 +44,7 @@
 
 - (NSArray *)movesAvailable:(NSNumber *)headLocation forSnakeBotColor:(enum ImageType)imageType {
     
-    NSLog(@"movesAvailable called");
+    NSLog(@"movesAvailable called with head location: %@",headLocation);
     NSMutableArray *moveArray = [[NSMutableArray alloc] init];
     NSArray *checkArray = [NSArray arrayWithObjects:@(headLocation.intValue - 1), @(headLocation.intValue + 10), @(headLocation.intValue + 1), @(headLocation.intValue - 10), nil];
     NSLog(@"Check Array complete:%@", checkArray);
@@ -176,7 +176,7 @@
                 [self changeLocationNumber:currentHead toNewImage:ImageTypeRedBeenThere];
                 [self changeLocationNumber:newLocation toNewImage:ImageTypeRedFace];
                 self.redHead = newLocation;
-                NSLog(@"Red Moves:%@ %@", currentHead, newLocation);
+                NSLog(@"Red Moves From:%@ To:%@\n\n", currentHead, newLocation);
             }
         }
     }
@@ -186,13 +186,22 @@
                 [self changeLocationNumber:currentHead toNewImage:ImageTypeBlueBeenThere];
                 [self changeLocationNumber:newLocation toNewImage:ImageTypeBlueFace];
                 self.blueHead = newLocation;
-                NSLog(@"Blue Moves:%@ %@", currentHead, newLocation);
+                NSLog(@"Blue Moves From:%@ To:%@\n\n", currentHead, newLocation);
             }
         }
     }
     
 }
 
-
+- (NSNumber *)headLocationForPlayerColor:(enum ImageType)playerColor {
+    
+    if (playerColor == ImageTypeRedFace) {
+        return self.redHead;
+    }
+    if (playerColor == ImageTypeBlueFace) {
+        return self.blueHead;
+    }
+    return nil;
+}
 
 @end

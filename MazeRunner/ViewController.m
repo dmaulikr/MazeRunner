@@ -278,6 +278,14 @@
     [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
     [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
     [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
+    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
     
     [self refreshGameGrid];
     

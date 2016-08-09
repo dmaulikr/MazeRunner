@@ -23,4 +23,8 @@
 - (void)resetGameGrid;
 - (void)snakeBotStartAtLocation:(NSNumber *)startLocation withImageType:(enum ImageType)playerColor;
 - (void)moveCurrentHead:(NSNumber *)currentHead toNewLocation:(NSNumber *)newLocation forPlayerColor:(enum ImageType)playerColor;
+- (NSNumber *)headLocationForPlayerColor:(enum ImageType)playerColor;
+
+
+
 @end
