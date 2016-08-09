@@ -86,8 +86,11 @@
 
 - (bool)isValidBoardLocation:(NSNumber *)moveLocation {
     
-    return ((moveLocation.intValue % 10 < 8 && moveLocation.intValue < 67) && (moveLocation.intValue >= 0));
-    
+    if (moveLocation != nil) {
+        return ((moveLocation.intValue % 10 < 8 && moveLocation.intValue < 67) && (moveLocation.intValue >= 0));
+    } else {
+        return NO;
+    }
 }
 
 - (bool)isAdjacent:(NSNumber *)headLocation toLocation:(NSNumber *)toLocation {
@@ -173,6 +176,7 @@
                 [self changeLocationNumber:currentHead toNewImage:ImageTypeRedBeenThere];
                 [self changeLocationNumber:newLocation toNewImage:ImageTypeRedFace];
                 self.redHead = newLocation;
+                NSLog(@"Red Moves:%@ %@", currentHead, newLocation);
             }
         }
     }
@@ -182,6 +186,7 @@
                 [self changeLocationNumber:currentHead toNewImage:ImageTypeBlueBeenThere];
                 [self changeLocationNumber:newLocation toNewImage:ImageTypeBlueFace];
                 self.blueHead = newLocation;
+                NSLog(@"Blue Moves:%@ %@", currentHead, newLocation);
             }
         }
     }
