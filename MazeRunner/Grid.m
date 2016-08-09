@@ -71,12 +71,12 @@
 - (bool)isLocation:(NSNumber *)location ofImageType:(enum ImageType)imageType {
     
     Cell *checkCell = [self.gridDictionary objectForKey:location];
-    NSLog(@"%d\n", (checkCell.imageType == imageType));
-    NSLog(@"headLocation: %@\n", location);
-    NSLog(@"ImageType: %ld\n", (long)imageType);
-    NSLog(@"Check Cell ImageType: %ld\n", checkCell.imageType);
-    NSLog(@"Check Cell contents: %@\n", checkCell);
-    NSLog(@"Check Grid contents: %@\n", self.gridDictionary);
+//    NSLog(@"%d\n", (checkCell.imageType == imageType));
+//    NSLog(@"headLocation: %@\n", location);
+//    NSLog(@"ImageType: %ld\n", (long)imageType);
+//    NSLog(@"Check Cell ImageType: %ld\n", checkCell.imageType);
+//    NSLog(@"Check Cell contents: %@\n", checkCell);
+    //NSLog(@"Check Grid contents: %@\n", self.gridDictionary);
     if (checkCell.imageType == imageType) {
         return YES;
     } else {
@@ -110,11 +110,15 @@
 
 - (bool)isValidMoveFromLocation:(NSNumber *)headLocation toLocation:(NSNumber *)toLocation {
     
+    NSLog(@"%@ and %@", headLocation, toLocation);
     // If both locations are on the board
     if ([self isValidBoardLocation:headLocation] && [self isValidBoardLocation:toLocation]) {
         
+        NSLog(@"These are valid board locations");
        // If both locations are adjacent
         if ([self isAdjacent:headLocation toLocation:toLocation]) {
+            
+            NSLog(@"These are adjacent locations");
             
             // If the to location is open
             if ([self isLocation:toLocation ofImageType:ImageTypeGrayDot]) {
