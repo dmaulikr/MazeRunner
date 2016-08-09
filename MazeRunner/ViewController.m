@@ -261,11 +261,11 @@
     
     // Spawn the bots
     // Spawn the red bot at 0,0 and place head token
-    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid.gridDictionary];
+    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid];
     [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation withImageType:redSnakeBot.playerColor];
     
     // Spawn the blue bot at 6,6 and place head token
-    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid.gridDictionary];
+    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid];
     [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation withImageType:blueSnakeBot.playerColor];
     [self refreshGameGrid];
     
@@ -289,17 +289,33 @@
     
     [self refreshGameGrid];
     
-    // NSLog(@"%@", self.gameGrid);
-    // RunLoop exits on win condition
-    
-    // Winner score increased
-    
     
 }
 
 - (void)randomPrizeLocation {
     NSNumber *newPrizeLocation = @(arc4random_uniform(7) * 10 +arc4random_uniform(7));
     [[self.gameGrid.gridDictionary objectForKey:newPrizeLocation] setImageType:ImageTypePrize];
+}
+
+- (void)playGame {
+    
+    // Clear the Board
+    [self.gameGrid resetGameGrid];
+    
+    // Drop the prize token
+    [self.gameGrid randomPrizeLocation];
+    
+    // Spawn Snake Bots
+    // Spawn the red bot at 0,0 and place head token
+    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid];
+    [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation withImageType:redSnakeBot.playerColor];
+    
+    // Spawn the blue bot at 6,6 and place head token
+    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid];
+    [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation withImageType:blueSnakeBot.playerColor];
+    
+    // Play the game while there is no win condition
+    
 }
 
 @end

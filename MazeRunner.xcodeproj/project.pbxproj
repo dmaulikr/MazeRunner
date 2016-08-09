@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89056FB41D5A4141005E7106 /* DebugHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89056FB31D5A4141005E7106 /* DebugHelper.m */; };
 		891E87911D562BA600D76585 /* BlueTeam100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E87901D562BA600D76585 /* BlueTeam100.png */; };
 		891E87931D562BB500D76585 /* BlueFace100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E87921D562BB500D76585 /* BlueFace100.png */; };
 		891E87951D562BC300D76585 /* BlueBeenThere100.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E87941D562BC300D76585 /* BlueBeenThere100.png */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89056FB21D5A4141005E7106 /* DebugHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugHelper.h; sourceTree = "<group>"; };
+		89056FB31D5A4141005E7106 /* DebugHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugHelper.m; sourceTree = "<group>"; };
 		891E87901D562BA600D76585 /* BlueTeam100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueTeam100.png; sourceTree = "<group>"; };
 		891E87921D562BB500D76585 /* BlueFace100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueFace100.png; sourceTree = "<group>"; };
 		891E87941D562BC300D76585 /* BlueBeenThere100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBeenThere100.png; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				893397611D56AD2300ED5EF2 /* Cell.m */,
 				8950A2331D58140800605E35 /* Grid.h */,
 				8950A2341D58140800605E35 /* Grid.m */,
+				89056FB21D5A4141005E7106 /* DebugHelper.h */,
+				89056FB31D5A4141005E7106 /* DebugHelper.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				893397621D56AD2300ED5EF2 /* Cell.m in Sources */,
 				89D8BECD1D529388000AACBD /* AppDelegate.m in Sources */,
 				89D8BECA1D529388000AACBD /* main.m in Sources */,
+				89056FB41D5A4141005E7106 /* DebugHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

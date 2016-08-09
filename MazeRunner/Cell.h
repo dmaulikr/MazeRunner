@@ -22,12 +22,17 @@ typedef NS_ENUM(NSInteger, ImageType)
     ImageTypeBlueBeenThere
 };
 
+typedef NS_ENUM(NSInteger, PlayerType)
+{
+    PlayerTypeNoPlayer = 1,
+    PlayerTypeRedPlayer,
+    PlayerTypeBluePlayer
+};
+
 @property (nonatomic, assign)enum ImageType imageType;
 @property (nonatomic,strong)NSString *imageViewNameString;
 @property (nonatomic, strong)NSNumber *locationNumber;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary andImageType:(enum ImageType)imageType;
-
-
 
 @end

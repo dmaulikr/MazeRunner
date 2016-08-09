@@ -10,9 +10,9 @@
 
 @implementation SnakeBot
 
-#pragma mark - Init Functions
+#pragma mark - Init Methods
 
-- (instancetype)initWithStart:(NSNumber *)startLocation andPlayerColor:(enum ImageType)playerColor withGameGrid:(NSDictionary *)gameGrid {
+- (instancetype)initWithStart:(NSNumber *)startLocation andPlayerColor:(enum ImageType)playerColor withGameGrid:(Grid *)gameGrid {
     self = [super init];
     if (self) {
         self.startLocation = startLocation;
@@ -24,7 +24,7 @@
     return self;
 }
 
-#pragma mark - Querry Grid Functions
+#pragma mark - Logic Methods
 
 - (NSNumber *)makeYourMoveSnakeBot:(Grid *)gameGrid {
     
@@ -52,7 +52,7 @@
     return chosenMove;
 }
 
-#pragma mark - Decision Functions
+
 
 - (NSNumber *)choseRandomMove:(NSArray *)choiceArray {
     

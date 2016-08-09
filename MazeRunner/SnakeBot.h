@@ -16,6 +16,9 @@
 @property (nonatomic,strong)NSMutableArray *snakePath;
 @property (nonatomic,strong)NSMutableArray *previousSteps;
 
-- (instancetype)initWithStart:(NSNumber *)startLocation andPlayerColor:(enum ImageType)playerColor withGameGrid:(NSDictionary *)gameGrid;
+//Init Methods
+- (instancetype)initWithStart:(NSNumber *)startLocation andPlayerColor:(enum ImageType)playerColor withGameGrid:(Grid *)gameGrid;
+
+// Logic Methods
 - (NSNumber *)makeYourMoveSnakeBot:(Grid *)gameGrid;
 @end

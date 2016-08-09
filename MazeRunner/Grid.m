@@ -12,16 +12,38 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    Cell *newCell;
-    self.gridDictionary = [[NSMutableDictionary alloc] init];
+    
+    //
     self = [super init];
     if (self) {
+        Cell *newCell;
+        self.gridDictionary = [[NSMutableDictionary alloc] init];
+        self.winner = PlayerTypeNoPlayer;
+        self.gDH = [[DebugHelper alloc] initWithDictionary:@{ @"iWD" : @NO,
+                                                              @"description" : @NO,
+                                                              @"movesAvailable:forSnakeBotColor:" : @NO,
+                                                              @"isLocation:ofImageType:" : @NO,
+                                                              @"isValidBoardLocation:" : @NO,
+                                                              @"isAdjacent:" : @NO,
+                                                              @"isValidMoveFromLocation:" : @NO,
+                                                              @"resetGameGrid" : @NO,
+                                                              @"changeLocationNumber:" : @NO,
+                                                              @"snakeBotStartAtLocation:" : @NO,
+                                                              @"moveCurrentHead:" : @NO,
+                                                              @"headLocationForPlayerColor:" : @NO,
+                                                              @"randomPrizeLocation" : @NO,
+                                                              //@"**********" : @NO,
+                                                              @"GridDebug" : @NO
+                                                                          }];
+  
         for(id key in dictionary) {
-            // NSLog(@"key=%@ value=%@", key, [dictionary objectForKey:key]);
+            if ([_gDH isOn:@"iWD"]) {NSLog(@"key=%@ value=%@", key, [dictionary objectForKey:key]);}
+            
+            
             newCell = [[Cell alloc] initWithDictionary:@{@"locationNumber" : key,
                                                          @"imageViewNameString" : [dictionary objectForKey:key]}
                                           andImageType:ImageTypeGrayDot];
-        [self.gridDictionary setObject:newCell forKey:key];
+            [self.gridDictionary setObject:newCell forKey:key];
         }
         
     }
@@ -203,5 +225,22 @@
     }
     return nil;
 }
+
+- (void)randomPrizeLocation {
+    
+    // Generate a random location
+    NSNumber *newPrizeLocation = @(arc4random_uniform(7) * 10 +arc4random_uniform(7));
+    
+    // Call change location and update the model
+    [self changeLocationNumber:newPrizeLocation toNewImage:ImageTypePrize];
+    
+    // Set the win position in grid
+    self.prizeLocation = newPrizeLocation;
+}
+
+
+
+
+
 
 @end
