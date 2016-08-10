@@ -32,11 +32,11 @@
     //NSArray
     
     // Ask the grid for available moves
-    NSArray *availableMoves = [gameGrid movesAvailable:[gameGrid headLocationForPlayerColor:self.playerColor] forSnakeBotColor:self.playerColor];
-    
-    //NSArray *availableMoves = @[@1,@10];
+    NSMutableArray *availableMoves = [NSMutableArray arrayWithArray:[gameGrid movesAvailable:[gameGrid headLocationForPlayerColor:self.playerColor]
+                                                                            forSnakeBotColor:self.playerColor]];
     
     // Remove the places we have already been from the available moves array
+    [availableMoves removeObjectsInArray:self.previousSteps];
     
     // If there are moves in the move array choose one
     if (availableMoves.count > 0) {
@@ -46,6 +46,17 @@
     // If there are no moves available, back track
     else {
         chosenMove = nil;
+    }
+    
+    // If the move is not nil
+    if (chosenMove) {
+    
+        // Add the move to our path
+        [self.snakePath addObject:chosenMove];
+        
+        // Add the move to places we've been
+        [self.previousSteps addObject:chosenMove];
+        
     }
 
     // Return the choice

@@ -18,6 +18,10 @@
     if (self) {
         Cell *newCell;
         self.gridDictionary = [[NSMutableDictionary alloc] init];
+        self.redPath = [[NSMutableArray alloc] init];
+        self.bluePath = [[NSMutableArray alloc] init];
+        self.redPrevious = [[NSMutableArray alloc] init];
+        self.bluePrevious = [[NSMutableArray alloc] init];
         self.winner = PlayerTypeNoPlayer;
         self.gDH = [[DebugHelper alloc] initWithDictionary:@{ @"iWD" : @NO,
                                                               @"description" : @NO,
@@ -135,29 +139,29 @@
 
 - (bool)isValidMoveFromLocation:(NSNumber *)headLocation toLocation:(NSNumber *)toLocation {
     
-    NSLog(@"%@ and %@", headLocation, toLocation);
+    //NSLog(@"%@ and %@", headLocation, toLocation);
     // If both locations are on the board
     if ([self isValidBoardLocation:headLocation] && [self isValidBoardLocation:toLocation]) {
         
-        NSLog(@"These are valid board locations");
+        //NSLog(@"These are valid board locations");
        // If both locations are adjacent
         if ([self isAdjacent:headLocation toLocation:toLocation]) {
             
-            NSLog(@"These are adjacent locations");
+            //NSLog(@"These are adjacent locations");
             
             // If the to location is open
-            if ([self isLocation:toLocation ofImageType:ImageTypeGrayDot]) {
+            if ([self isLocation:toLocation ofImageType:ImageTypeGrayDot] || [self isLocation:toLocation ofImageType:ImageTypePrize]) {
                 return YES;
             } else {
-               NSLog(@"Not Open");
+               //NSLog(@"Not Open");
             }
             
         } else {
-            NSLog(@"Locations not adjacent:%@ %@", headLocation, toLocation);
+            //NSLog(@"Locations not adjacent:%@ %@", headLocation, toLocation);
         }
         
     } else {
-        NSLog(@"Not a valid board location");
+        //NSLog(@"Not a valid board location");
     }
     return NO;
     
@@ -169,6 +173,7 @@
     for (id key in self.gridDictionary) {
         [self changeLocationNumber:key toNewImage:ImageTypeGrayDot];
     }
+    self.winner = PlayerTypeNoPlayer;
 }
 
 - (void)changeLocationNumber:(NSNumber *)locationNumber toNewImage:(enum ImageType)newImage {
@@ -191,28 +196,72 @@
 
 - (void)moveCurrentHead:(NSNumber *)currentHead toNewLocation:(NSNumber *)newLocation forPlayerColor:(enum ImageType)playerColor {
     
-    // verify that the head location is correct
-    if (playerColor == ImageTypeRedFace) {
-        if (self.redHead == currentHead) {
-            if ([self isValidMoveFromLocation:currentHead toLocation:newLocation]) {
-                [self changeLocationNumber:currentHead toNewImage:ImageTypeRedBeenThere];
-                [self changeLocationNumber:newLocation toNewImage:ImageTypeRedFace];
-                self.redHead = newLocation;
-                NSLog(@"Red Moves From:%@ To:%@\n\n", currentHead, newLocation);
+    // If new location is nil
+    if (newLocation == nil) {
+        
+        
+        // Backtrack as long as its not the starting point
+        if (playerColor == ImageTypeRedFace) {
+            if (self.redHead == currentHead) {
+                NSNumber *lastLocation = [self.redPath lastObject];
+                NSLog(@"Last Location: %@\n\n", lastLocation);
+                NSLog(@"Path Array: %@\n\n", lastLocation);
+                [self changeLocationNumber:currentHead toNewImage:ImageTypeGrayDot];
+                [self changeLocationNumber:lastLocation toNewImage:ImageTypeRedFace];
+                self.redHead = lastLocation;
+                [self.redPath removeLastObject];
+                
             }
         }
-    }
-    if (playerColor == ImageTypeBlueFace) {
-        if (self.blueHead == currentHead) {
-            if ([self isValidMoveFromLocation:currentHead toLocation:newLocation]) {
-                [self changeLocationNumber:currentHead toNewImage:ImageTypeBlueBeenThere];
-                [self changeLocationNumber:newLocation toNewImage:ImageTypeBlueFace];
-                self.blueHead = newLocation;
-                NSLog(@"Blue Moves From:%@ To:%@\n\n", currentHead, newLocation);
+        if (playerColor == ImageTypeBlueFace) {
+            if (self.blueHead == currentHead) {
+                NSNumber *lastLocation = [self.bluePath lastObject];
+                NSLog(@"Last Location: %@\n\n", lastLocation);
+                [self changeLocationNumber:currentHead toNewImage:ImageTypeGrayDot];
+                [self changeLocationNumber:lastLocation toNewImage:ImageTypeBlueFace];
+                self.blueHead = lastLocation;
+                [self.bluePath removeLastObject];
+                
             }
+            
         }
-    }
+        
+    } else {
     
+    // verify that the head location is correct
+        if (playerColor == ImageTypeRedFace) {
+            if (self.redHead == currentHead) {
+                if ([self isValidMoveFromLocation:currentHead toLocation:newLocation]) {
+                    [self changeLocationNumber:currentHead toNewImage:ImageTypeRedBeenThere];
+                    [self changeLocationNumber:newLocation toNewImage:ImageTypeRedFace];
+                    self.redHead = newLocation;
+                    [self.redPath addObject:newLocation];
+                    [self.redPrevious addObject:newLocation];
+                    NSLog(@"\nRed Moves From:%@ To:%@ Prize is:%@\n\n", currentHead, newLocation, self.prizeLocation);
+                    if (self.redHead.intValue == self.prizeLocation.intValue) {
+                        self.winner = PlayerTypeRedPlayer;
+                        NSLog(@"Red Wins*******************");
+                    }
+                }
+            }
+        }
+        if (playerColor == ImageTypeBlueFace) {
+            if (self.blueHead == currentHead) {
+                if ([self isValidMoveFromLocation:currentHead toLocation:newLocation]) {
+                    [self changeLocationNumber:currentHead toNewImage:ImageTypeBlueBeenThere];
+                    [self changeLocationNumber:newLocation toNewImage:ImageTypeBlueFace];
+                    self.blueHead = newLocation;
+                    [self.bluePath addObject:newLocation];
+                    [self.bluePrevious addObject:newLocation];
+                    NSLog(@"\nBlue Moves From:%@ To:%@ Prize is:%@\n\n", currentHead, newLocation, self.prizeLocation);
+                    if (self.blueHead.intValue == self.prizeLocation.intValue) {
+                        self.winner = PlayerTypeBluePlayer;
+                        NSLog(@"Blue Wins******************");
+                    }
+                }
+            }
+        }
+    }
 }
 
 - (NSNumber *)headLocationForPlayerColor:(enum ImageType)playerColor {

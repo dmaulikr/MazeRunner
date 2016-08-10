@@ -16,8 +16,12 @@
 @property (nonatomic, strong) NSMutableDictionary *gridDictionary;
 @property (nonatomic, strong)NSNumber *redStart;
 @property (nonatomic, strong)NSNumber *redHead;
+@property (nonatomic, strong)NSMutableArray *redPath;
+@property (nonatomic, strong)NSMutableArray *redPrevious;
 @property (nonatomic, strong)NSNumber *blueStart;
 @property (nonatomic, strong)NSNumber *blueHead;
+@property (nonatomic, strong)NSMutableArray *bluePath;
+@property (nonatomic, strong)NSMutableArray *bluePrevious;
 @property (nonatomic, strong)NSNumber *prizeLocation;
 @property (nonatomic, assign)enum PlayerType winner;
 @property (nonatomic, strong)DebugHelper *gDH;

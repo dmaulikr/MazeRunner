@@ -254,42 +254,8 @@
 }
 
 - (IBAction)onStartButtonPressed:(id)sender {
-    [self.gameGrid resetGameGrid];
-    
-    // Drop the prize token
-    [self randomPrizeLocation];
-    
-    // Spawn the bots
-    // Spawn the red bot at 0,0 and place head token
-    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid];
-    [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation withImageType:redSnakeBot.playerColor];
-    
-    // Spawn the blue bot at 6,6 and place head token
-    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid];
-    [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation withImageType:blueSnakeBot.playerColor];
-    [self refreshGameGrid];
-    
-    
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.redHead toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeRedFace];
-    [self.gameGrid moveCurrentHead:self.gameGrid.blueHead toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid] forPlayerColor:ImageTypeBlueFace];
-    
-    [self refreshGameGrid];
-    
-    
+
+    [self playGame];
 }
 
 - (void)randomPrizeLocation {
@@ -299,6 +265,11 @@
 
 - (void)playGame {
     
+    // Create Serial Queues
+    dispatch_queue_t serialQueueRed = dispatch_queue_create("redQueue", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t serialQueueBlue = dispatch_queue_create("blueQueue", DISPATCH_QUEUE_SERIAL);
+
+    
     // Clear the Board
     [self.gameGrid resetGameGrid];
     
@@ -307,14 +278,75 @@
     
     // Spawn Snake Bots
     // Spawn the red bot at 0,0 and place head token
-    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0 andPlayerColor:ImageTypeRedFace withGameGrid:self.gameGrid];
-    [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation withImageType:redSnakeBot.playerColor];
+    SnakeBot *redSnakeBot = [[SnakeBot alloc] initWithStart:@0
+                                             andPlayerColor:ImageTypeRedFace
+                                               withGameGrid:self.gameGrid];
+    
+    // Set the Red Snake Bot to its first position
+    [self.gameGrid snakeBotStartAtLocation:redSnakeBot.startLocation
+                             withImageType:redSnakeBot.playerColor];
     
     // Spawn the blue bot at 6,6 and place head token
-    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66 andPlayerColor:ImageTypeBlueFace withGameGrid:self.gameGrid];
-    [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation withImageType:blueSnakeBot.playerColor];
+    SnakeBot *blueSnakeBot = [[SnakeBot alloc] initWithStart:@66
+                                              andPlayerColor:ImageTypeBlueFace
+                                                withGameGrid:self.gameGrid];
+    
+    // Set the Blue Snake Bot to its first position
+    [self.gameGrid snakeBotStartAtLocation:blueSnakeBot.startLocation
+                             withImageType:blueSnakeBot.playerColor];
+    
+    [self refreshGameGrid];
+    
+
+    dispatch_semaphore_t redSemaphore = dispatch_semaphore_create(0);
+    dispatch_semaphore_t blueSemaphore = dispatch_semaphore_create(0);
     
     // Play the game while there is no win condition
+    int counter = 0;
+    while (self.gameGrid.winner == PlayerTypeNoPlayer && counter < 50) {
+        
+        dispatch_async(serialQueueRed, ^{
+             // Red Player takes a turn
+            [self.gameGrid moveCurrentHead:self.gameGrid.redHead
+                             toNewLocation:[redSnakeBot makeYourMoveSnakeBot:self.gameGrid]
+                            forPlayerColor:ImageTypeRedFace];
+            dispatch_semaphore_signal(redSemaphore);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self refreshGameGrid];
+                
+            });
+            
+        });
+        dispatch_semaphore_wait(redSemaphore, DISPATCH_TIME_FOREVER);
+        
+        
+        
+        if (self.gameGrid.winner == PlayerTypeNoPlayer) {
+            dispatch_async(serialQueueBlue, ^{
+                // Blue Player takes a turn
+                [self.gameGrid moveCurrentHead:self.gameGrid.blueHead
+                                 toNewLocation:[blueSnakeBot makeYourMoveSnakeBot:self.gameGrid]
+                                forPlayerColor:ImageTypeBlueFace];
+                dispatch_semaphore_signal(blueSemaphore);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self refreshGameGrid];
+                    
+                });
+                
+            });
+        }
+        dispatch_semaphore_wait(blueSemaphore, DISPATCH_TIME_FOREVER);
+        
+        
+
+        
+        counter++;
+        
+    }
+    
+    NSLog(@"We have a winner");
+    
+    
     
 }
 
