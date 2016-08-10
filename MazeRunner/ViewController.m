@@ -254,8 +254,13 @@
 }
 
 - (IBAction)onStartButtonPressed:(id)sender {
+    
+    for (int i = 0;i < 10;i++) {
+        
+        [self playGame];
+    }
 
-    [self playGame];
+    
 }
 
 - (void)randomPrizeLocation {
@@ -303,7 +308,7 @@
     
     // Play the game while there is no win condition
     int counter = 0;
-    while (self.gameGrid.winner == PlayerTypeNoPlayer && counter < 50) {
+    while (self.gameGrid.winner == PlayerTypeNoPlayer && counter < 200) {
         
         dispatch_async(serialQueueRed, ^{
              // Red Player takes a turn
@@ -317,6 +322,8 @@
             });
             
         });
+        
+        
         dispatch_semaphore_wait(redSemaphore, DISPATCH_TIME_FOREVER);
         
         
@@ -335,7 +342,8 @@
                 
             });
         }
-        dispatch_semaphore_wait(blueSemaphore, DISPATCH_TIME_FOREVER);
+        
+                dispatch_semaphore_wait(blueSemaphore, 300000000000);
         
         
 
@@ -345,9 +353,19 @@
     }
     
     NSLog(@"We have a winner");
+    [self tallyWinner];
     
     
+}
+
+- (void)tallyWinner {
     
+    if (_gameGrid.winner == PlayerTypeRedPlayer) {
+        [self.leftPlayerScore setText:[NSString stringWithFormat:@"%i", (self.leftPlayerScore.text.intValue + 1)]];
+    }
+    if (_gameGrid.winner == PlayerTypeBluePlayer) {
+        [self.rightPlayerScore setText:[NSString stringWithFormat:@"%i", (self.rightPlayerScore.text.intValue + 1)]];
+    }
 }
 
 @end
